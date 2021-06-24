@@ -20,8 +20,8 @@ namespace Service.Simulation.Binance.Client
             _channel = channel.Intercept(new PrometheusMetricsInterceptor());
         }
         
-        public ISimulationTradingService GetSimulationFtxTradingService() => _channel.CreateGrpcService<ISimulationTradingService>();
-        public ISimulationTradeHistoryService GetSimulationFtxTradeHistoryService() => _channel.CreateGrpcService<ISimulationTradeHistoryService>();
+        public ISimulationTradingService GetSimulationBinanceTradingService() => _channel.CreateGrpcService<ISimulationTradingService>();
+        public ISimulationTradeHistoryService GetSimulationBinanceTradeHistoryService() => _channel.CreateGrpcService<ISimulationTradeHistoryService>();
 
     }
 }
