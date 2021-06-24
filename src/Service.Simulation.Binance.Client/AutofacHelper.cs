@@ -1,7 +1,7 @@
 ﻿// ReSharper disable UnusedMember.Global
 
 using Autofac;
-using Service.Simulation.Binance.Grpc;
+using Service.Simulation.Grpc;
 
 namespace Service.Simulation.Binance.Client
 {

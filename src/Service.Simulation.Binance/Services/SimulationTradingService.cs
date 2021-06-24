@@ -6,9 +6,9 @@ using Microsoft.Extensions.Logging;
 using MyJetWallet.Domain.ExternalMarketApi.Models;
 using MyNoSqlServer.Abstractions;
 using Newtonsoft.Json;
-using Service.Simulation.Binance.Grpc;
-using Service.Simulation.Binance.Grpc.Models;
 using Service.Simulation.Binance.NoSql;
+using Service.Simulation.Grpc;
+using Service.Simulation.Grpc.Models;
 
 namespace Service.Simulation.Binance.Services
 {
@@ -20,7 +20,8 @@ namespace Service.Simulation.Binance.Services
         private readonly IMyNoSqlServerDataWriter<BalancesNoSql> _balanceWriter;
         private readonly TradeHistory _history;
 
-        public SimulationTradingService(ILogger<SimulationTradingService> logger, MarketCache marketCache, OrderBookManager orderBookManager, IMyNoSqlServerDataWriter<BalancesNoSql> balanceWriter,
+        public SimulationTradingService(ILogger<SimulationTradingService> logger, MarketCache marketCache,
+            OrderBookManager orderBookManager, IMyNoSqlServerDataWriter<BalancesNoSql> balanceWriter,
             TradeHistory history)
         {
             _logger = logger;
@@ -32,7 +33,8 @@ namespace Service.Simulation.Binance.Services
 
         public async Task<ExecuteMarketOrderResponse> ExecuteMarketOrderAsync(ExecuteMarketOrderRequest request)
         {
-            _logger.LogInformation("ExecuteMarketOrderAsync Request: {tradeText}", JsonConvert.SerializeObject(request));
+            _logger.LogInformation("ExecuteMarketOrderAsync Request: {tradeText}",
+                JsonConvert.SerializeObject(request));
 
             var marketResp = await GetMarketInfoAsync(new GetMarketInfoRequest() {Market = request.Market});
 
@@ -50,7 +52,8 @@ namespace Service.Simulation.Binance.Services
             var orderBookResp = _orderBookManager.GetOrderBookAsync(request.Market);
             if (orderBookResp.OrderBook == null)
             {
-                _logger.LogError("Cannot execute market order, order book do not found. Request: {jsonText}",  JsonConvert.SerializeObject(request));
+                _logger.LogError("Cannot execute market order, order book do not found. Request: {jsonText}",
+                    JsonConvert.SerializeObject(request));
                 return new ExecuteMarketOrderResponse()
                 {
                     Success = false,
@@ -101,16 +104,18 @@ namespace Service.Simulation.Binance.Services
                     return new ExecuteMarketOrderResponse()
                     {
                         Success = false,
-                        
                     };
                 }
 
                 quoteBalance.Amount -= quoteVolume;
-                if (baseBalance == null) baseBalance = new GetBalancesResponse.Balance() { Symbol = market.BaseAsset, Amount = 0 };
+                if (baseBalance == null)
+                    baseBalance = new GetBalancesResponse.Balance() {Symbol = market.BaseAsset, Amount = 0};
                 baseBalance.Amount += request.Size;
 
-                await SetBalanceAsync(new SetBalanceRequest() {Symbol = quoteBalance.Symbol, Amount = quoteBalance.Amount});
-                await SetBalanceAsync(new SetBalanceRequest() { Symbol = baseBalance.Symbol, Amount = baseBalance.Amount });
+                await SetBalanceAsync(new SetBalanceRequest()
+                    {Symbol = quoteBalance.Symbol, Amount = quoteBalance.Amount});
+                await SetBalanceAsync(
+                    new SetBalanceRequest() {Symbol = baseBalance.Symbol, Amount = baseBalance.Amount});
 
                 var price = quoteVolume / request.Size;
 
@@ -181,11 +186,14 @@ namespace Service.Simulation.Binance.Services
 
                 baseBalance.Amount -= request.Size;
 
-                if (quoteBalance == null) quoteBalance = new GetBalancesResponse.Balance() { Symbol = market.QuoteAsset, Amount = 0};
+                if (quoteBalance == null)
+                    quoteBalance = new GetBalancesResponse.Balance() {Symbol = market.QuoteAsset, Amount = 0};
                 quoteBalance.Amount += quoteVolume;
 
-                await SetBalanceAsync(new SetBalanceRequest() { Symbol = baseBalance.Symbol, Amount = baseBalance.Amount });
-                await SetBalanceAsync(new SetBalanceRequest() { Symbol = quoteBalance.Symbol, Amount = quoteBalance.Amount });
+                await SetBalanceAsync(
+                    new SetBalanceRequest() {Symbol = baseBalance.Symbol, Amount = baseBalance.Amount});
+                await SetBalanceAsync(new SetBalanceRequest()
+                    {Symbol = quoteBalance.Symbol, Amount = quoteBalance.Amount});
 
                 var price = quoteVolume / request.Size;
 
@@ -265,7 +273,7 @@ namespace Service.Simulation.Binance.Services
                 Market = market.Market,
                 BaseAsset = market.BaseAsset,
                 QuoteAsset = market.QuoteAsset,
-                MinVolume = (double)market.MinVolume
+                MinVolume = (double) market.MinVolume
             };
 
             //var volumeParams = market.sizeIncrement.ToString(CultureInfo.InvariantCulture).Split('.');
@@ -287,6 +295,4 @@ namespace Service.Simulation.Binance.Services
             await _balanceWriter.InsertOrReplaceAsync(item);
         }
     }
-
-    
 }

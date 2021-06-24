@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Service.Simulation.Binance.Grpc;
-using Service.Simulation.Binance.Grpc.Models;
+using Service.Simulation.Grpc;
+using Service.Simulation.Grpc.Models;
 
 namespace Service.Simulation.Binance.Services
 {

@@ -5,7 +5,7 @@ using Grpc.Net.Client;
 using JetBrains.Annotations;
 using MyJetWallet.Sdk.GrpcMetrics;
 using ProtoBuf.Grpc.Client;
-using Service.Simulation.Binance.Grpc;
+using Service.Simulation.Grpc;
 
 namespace Service.Simulation.Binance.Client
 {

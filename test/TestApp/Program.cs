@@ -4,12 +4,10 @@ using System.Threading.Tasks;
 using Grpc.Core.Interceptors;
 using Grpc.Net.Client;
 using MyJetWallet.Domain.ExternalMarketApi;
-using MyJetWallet.Domain.ExternalMarketApi.Dto;
-using MyJetWallet.Domain.Orders;
 using MyJetWallet.Sdk.GrpcMetrics;
 using ProtoBuf.Grpc.Client;
-using Service.Simulation.Binance.Grpc;
-using Service.Simulation.Binance.Grpc.Models;
+using Service.Simulation.Grpc;
+using Service.Simulation.Grpc.Models;
 
 namespace TestApp
 {

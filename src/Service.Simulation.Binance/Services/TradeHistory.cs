@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Service.Simulation.Binance.Grpc.Models;
+using Service.Simulation.Grpc.Models;
 
 namespace Service.Simulation.Binance.Services
 {

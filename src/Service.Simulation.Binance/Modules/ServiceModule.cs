@@ -2,9 +2,9 @@
 using Binance;
 using MyNoSqlServer.Abstractions;
 using MyNoSqlServer.DataWriter;
-using Service.Simulation.Binance.Grpc;
 using Service.Simulation.Binance.NoSql;
 using Service.Simulation.Binance.Services;
+using Service.Simulation.Grpc;
 
 namespace Service.Simulation.Binance.Modules
 {

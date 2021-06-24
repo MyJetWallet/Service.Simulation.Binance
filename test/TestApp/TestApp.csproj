@@ -16,4 +16,10 @@
     <ProjectReference Include="..\..\src\Service.Simulation.Binance.Grpc\Service.Simulation.Binance.Grpc.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Reference Include="Service.Simulation.FTX.Grpc, Version=1.2.5.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\..\..\Users\dmitr\.nuget\packages\myjetwallet.service.simulation.ftx.client\1.2.5\lib\netstandard2.1\Service.Simulation.FTX.Grpc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
