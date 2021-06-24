@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference PrivateAssets="All" Include="..\Service.Simulation.Binance.Domain.Models\Service.Simulation.Binance.Domain.Models.csproj" />
-    <ProjectReference PrivateAssets="All" Include="..\Service.Simulation.Binance.Grpc\Service.Simulation.Binance.Grpc.csproj" />
   </ItemGroup>
 
   <ItemGroup>

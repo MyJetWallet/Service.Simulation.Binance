@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Service.Simulation.Binance.Client\Service.Simulation.Binance.Client.csproj" />
-    <ProjectReference Include="..\..\src\Service.Simulation.Binance.Grpc\Service.Simulation.Binance.Grpc.csproj" />
   </ItemGroup>
 
   <ItemGroup>
