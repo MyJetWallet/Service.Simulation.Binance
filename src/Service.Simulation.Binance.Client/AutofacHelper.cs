@@ -10,7 +10,7 @@ namespace Service.Simulation.Binance.Client
         public static void RegisterSimulationBinanceClient(this ContainerBuilder builder,
             string simulationFtxGrpcServiceUrl)
         {
-            var factory = new SimulationClientFactory(simulationFtxGrpcServiceUrl);
+            var factory = new SimulationBinanceClientFactory(simulationFtxGrpcServiceUrl);
 
             builder.RegisterInstance(factory.GetSimulationBinanceTradingService()).As<ISimulationTradingService>()
                 .SingleInstance();

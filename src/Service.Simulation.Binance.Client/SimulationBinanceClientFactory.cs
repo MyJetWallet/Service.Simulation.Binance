@@ -10,10 +10,10 @@ using Service.Simulation.Binance.Grpc;
 namespace Service.Simulation.Binance.Client
 {
     [UsedImplicitly]
-    public class SimulationClientFactory
+    public class SimulationBinanceClientFactory
     {
         private readonly CallInvoker _channel;
-        public SimulationClientFactory(string grpcServiceUrl)
+        public SimulationBinanceClientFactory(string grpcServiceUrl)
         {
             AppContext.SetSwitch("System.Net.Http.SocketsHttpHandler.Http2UnencryptedSupport", true);
             var channel = GrpcChannel.ForAddress(grpcServiceUrl);

@@ -48,7 +48,7 @@ namespace Service.Simulation.Binance.Services
 
             var resp = await _service.GetBalancesAsync();
             var result = resp.Balances.Select(e => new ExchangeBalance()
-                {Symbol = e.Symbol, Balance = (decimal)e.Amount, Free = (decimal)e.Amount}).ToList();
+                {Symbol = e.Symbol, Balance = (decimal)e.Amount, Free = (decimal)e.Amount}).ToList();   
             return new GetBalancesResponse(){Balances = result};
         }
 
