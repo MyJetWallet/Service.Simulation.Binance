@@ -12,9 +12,9 @@ namespace Service.Simulation.Binance.Client
         {
             var factory = new SimulationClientFactory(simulationFtxGrpcServiceUrl);
 
-            builder.RegisterInstance(factory.GetSimulationFtxTradingService()).As<ISimulationTradingService>()
+            builder.RegisterInstance(factory.GetSimulationBinanceTradingService()).As<ISimulationTradingService>()
                 .SingleInstance();
-            builder.RegisterInstance(factory.GetSimulationFtxTradeHistoryService()).As<ISimulationTradeHistoryService>()
+            builder.RegisterInstance(factory.GetSimulationBinanceTradeHistoryService()).As<ISimulationTradeHistoryService>()
                 .SingleInstance();
         }
     }
