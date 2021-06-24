@@ -15,14 +15,9 @@
     <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
     <PackageReference Include="MyJetWallet.Sdk.Grpc" Version="1.0.2" />
     <PackageReference Include="MyJetWallet.Sdk.GrpcMetrics" Version="2.0.0" />
+    <PackageReference Include="MyJetWallet.Service.Simulation.FTX.Client" Version="1.2.5" />
     <PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.152" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Service.Simulation.FTX.Grpc, Version=1.2.5.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\Users\dmitr\.nuget\packages\myjetwallet.service.simulation.ftx.client\1.2.5\lib\netstandard2.1\Service.Simulation.FTX.Grpc.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <PropertyGroup>
