@@ -37,12 +37,12 @@ namespace Service.Simulation.Binance.Services
                 : new List<string>();
         }
 
-        public Task<GetNameResult> GetNameAsync()
+        public Task<GetNameResult> GetNameAsync(GetNameRequest request)
         {
             return Task.FromResult(new GetNameResult() {Name = OrderBookManager.Source });
         }
 
-        public async Task<GetBalancesResponse> GetBalancesAsync()
+        public async Task<GetBalancesResponse> GetBalancesAsync(GetBalancesRequest request)
         {
             using var activity = MyTelemetry.StartActivity("Get balance");
 
@@ -63,7 +63,7 @@ namespace Service.Simulation.Binance.Services
             return new GetMarketInfoResponse() { Info = null };
         }
 
-        public async Task<GetMarketInfoListResponse> GetMarketInfoListAsync()
+        public async Task<GetMarketInfoListResponse> GetMarketInfoListAsync(GetMarketInfoListRequest request)
         {
             if (_marketInfoData!.Any() != true)
                 await LoadMarketInfo();
@@ -115,7 +115,7 @@ namespace Service.Simulation.Binance.Services
                     Timestamp = resp.Trade.Timestamp,
                     Side = resp.Trade.Side == SimulationOrderSide.Buy ? OrderSide.Buy : OrderSide.Sell,
                     OppositeVolume = (double) ((decimal) resp.Trade.Price * (decimal) resp.Trade.Size),
-                    Source = (await GetNameAsync()).Name
+                    Source = (await GetNameAsync(null)).Name
                 };
 
                 result.AddToActivityAsJsonTag("result");
