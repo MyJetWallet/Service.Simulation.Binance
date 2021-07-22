@@ -7,8 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="Grpc.Net.Client" Version="2.38.0" />
-    <PackageReference Include="MyJetWallet.Domain.ExternalMarketApi" Version="1.1.4" />
-    <PackageReference Include="MyJetWallet.Service.Simulation.FTX.Client" Version="1.2.5" />
+    <PackageReference Include="MyJetWallet.Domain.ExternalMarketApi" Version="1.1.5" />
+    <PackageReference Include="MyJetWallet.Service.Simulation.FTX.Client" Version="1.2.6" />
     <PackageReference Include="protobuf-net.Grpc" Version="1.0.152" />
   </ItemGroup>
 

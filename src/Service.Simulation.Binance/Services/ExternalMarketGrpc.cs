@@ -148,7 +148,10 @@ namespace Service.Simulation.Binance.Services
                         PriceAccuracy = marketInfo.PriceAccuracy,
                         BaseAsset = marketInfo.BaseAsset,
                         QuoteAsset = marketInfo.QuoteAsset,
-                        VolumeAccuracy = marketInfo.BaseAccuracy
+                        VolumeAccuracy = marketInfo.BaseAccuracy,
+                        AssociateInstrument = marketInfo.AssociateInstrument,
+                        AssociateBaseAsset = marketInfo.AssociateBaseAsset,
+                        AssociateQuoteAsset = marketInfo.AssociateQuoteAsset
                     };
 
                     result[resp.Market] = resp;
